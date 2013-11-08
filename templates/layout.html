@@ -1,0 +1,10 @@
+<!doctype html>
+<title>twoch</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+<script type="text/javascript" src="{{ url_for('static', filename='jquery-2.0.3.min.js') }}"></script>
+<div class="page">
+  <h1>twoch</h1>
+  <a href="{{ url_for('dat') }}">dat</a>
+  <a href="{{ url_for('img') }}">img</a>
+  {% block body %}{% endblock %}
+</div>

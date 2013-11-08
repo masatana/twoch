@@ -1,0 +1,17 @@
+#sidebar {
+    width: 10%;
+    float: left;
+    margin: 0;
+    padding: 0;
+    border: double;
+}
+#reader {
+    width: 80%;
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    color: red;
+}
