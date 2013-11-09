@@ -12,6 +12,15 @@
     padding: 0;
 }
 
+#footer {
+    text-align: center;
+    clear: both;
+}
 li {
     color: red;
+}
+
+.dat {
+    cursor: pointer;
+    text-decoration: underline;
 }

@@ -1,10 +1,30 @@
 <!doctype html>
-<title>twoch</title>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-<script type="text/javascript" src="{{ url_for('static', filename='jquery-2.0.3.min.js') }}"></script>
-<div class="page">
-  <h1>twoch</h1>
-  <a href="{{ url_for('dat') }}">dat</a>
-  <a href="{{ url_for('img') }}">img</a>
-  {% block body %}{% endblock %}
-</div>
+<html lang="ja">
+  <head>
+    {% block head %}
+    <title>twoch</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    {% endblock %}
+    <script type="text/javascript">
+    $(function() {
+      $(".dat").click(function() {
+        $.getJSON("/_get_dat", {
+          thread_id: this.id
+        }, function(data) {
+          alert(data.result);
+        });
+      });
+    });
+    </script>
+  </head>
+  <body>
+    <h1>twoch</h1>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+      {% block footer %}
+      &copy; Copyright 2013 by masatana.
+      {% endblock %}
+    </div>
+  </body>
+</html>

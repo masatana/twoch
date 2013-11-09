@@ -1,11 +1,15 @@
 {% extends "layout.html" %}
-{% block body %}
+{% block content %}
 <h2>dat</h2>
 <div id="sidebar">
-    {% include "sidebar.html" %}
+  {% block sidebar %}
+  {% for creation_date, thread in sidebar_contents.items() %}
+    <h2>{{ creation_date }}</h2>
+    {% for thread_title, thread_id in thread.items() %}
+      <li><span href="#" id="{{ thread_id }}" class="dat">{{ thread_title }}</span></li>
+    {% endfor %}
+  {% endfor %}
+  {% endblock %}
 </div>
-<div id="reader">
-    {% include "reader.html" %}
-</div>
-
+<div id="reader">{% block reader %}{% endblock %}</div>
 {% endblock %}
