@@ -50,7 +50,11 @@ def dat():
 @app.route("/_get_dat")
 def get_dat():
     thread_id = request.args.get("thread_id", 0, type=int)
-    return jsonify(result = thread_id)
+    t = (thread_id,)
+    res = query_db("SELECT * FROM downloaded_thread WHERE id=?", args=t)
+    with open("/home/masatana/2ch_crawler/dat/" + res[0]["download_date"] + "/" + res[0]["title"] + ".dat", "r") as f:
+        data = f.read()
+    return jsonify(result = data)
 
 @app.route("/img")
 def img():
