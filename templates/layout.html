@@ -11,7 +11,8 @@
         $.getJSON("/_get_dat", {
           thread_id: this.id
         }, function(data) {
-          alert(data.result);
+          console.log(data.result);
+          $("#reader").text(data.result);
         });
       });
     });
