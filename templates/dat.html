@@ -11,5 +11,14 @@
   {% endfor %}
   {% endblock %}
 </div>
-<div id="reader">{% block reader %}{% endblock %}</div>
+<div id="reader">
+  {% block reader %}
+  {% if not data %}
+    {% for res_number, value in data.items() %}
+    <h2>{{ res_number, data[res_number]["name"] }}</h2>
+    <h3>{{ data[res_number]["body"] }}</h3>
+    {% endfor %}
+  {% endif %}
+  {% endblock %}
+</div>
 {% endblock %}
