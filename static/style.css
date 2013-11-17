@@ -24,3 +24,8 @@ li {
     cursor: pointer;
     text-decoration: underline;
 }
+
+p {
+    color: green;
+    border: solid;
+}

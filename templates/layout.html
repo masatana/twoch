@@ -11,8 +11,15 @@
         $.getJSON("/_get_dat", {
           thread_id: this.id
         }, function(data) {
+          // Do not use remove()
+          // Remove previous dat
+          $("#reader").empty();
           console.log(data.result);
-          $("#reader").text(data.result);
+          var splits = data.result.split("\n");
+          for (var i = 0; i < splits.length; i++) {
+            $("#reader").append("<p>" + splits[i] + "</p>");
+          }
+          //$("#reader").text(data.result);
         });
       });
     });

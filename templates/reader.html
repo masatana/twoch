@@ -1,12 +1,6 @@
 {% extends "dat.html" %}
-{% block content %}
-{% block sidebar %}
-{% endblock %}
 {% block reader %}
-{% for res_number in data %}
-  <h2> {{ data[res_number]["name"] }} </h2>
-  <h3> {{ data[res_number]["data_id_be"] }} <h3>
-    <p> {{ data[res_number]["body"] }} </p>
+{% for key, value in data.items() %}
+  <p> {{ value }} </p>
 {% endfor %}
-{% endblock %}
 {% endblock %}

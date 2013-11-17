@@ -3,7 +3,7 @@
 <h2>dat</h2>
 <div id="sidebar">
   {% block sidebar %}
-  {% for creation_date, thread in sidebar_contents.items() %}
+  {% for creation_date, thread in sidebar_contents|dictsort %}
     <h2>{{ creation_date }}</h2>
     {% for thread_title, thread_id in thread.items() %}
       <li><span href="#" id="{{ thread_id }}" class="dat">{{ thread_title }}</span></li>
@@ -13,12 +13,6 @@
 </div>
 <div id="reader">
   {% block reader %}
-  {% if not data %}
-    {% for res_number, value in data.items() %}
-    <h2>{{ res_number, data[res_number]["name"] }}</h2>
-    <h3>{{ data[res_number]["body"] }}</h3>
-    {% endfor %}
-  {% endif %}
   {% endblock %}
 </div>
 {% endblock %}
