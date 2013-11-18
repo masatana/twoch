@@ -28,12 +28,18 @@ li {
 /* resそれぞれ一つ */
 .respond {
     border: solid;
+    border-width: 1px;
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
+    background-color: #eee8d5;
 }
 .respond_meta {
     display: inline-block;
     _display: inline;
+}
+
+body {
+    background-color: #fdf6e3;
 }
