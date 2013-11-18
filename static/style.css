@@ -25,7 +25,11 @@ li {
     text-decoration: underline;
 }
 
-div {
-    color: green;
+/* resそれぞれ一つ */
+.respond {
     border: solid;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    margin-top: 10px;
 }

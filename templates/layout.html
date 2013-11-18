@@ -17,7 +17,7 @@
           console.log(data.result);
           var splits = data.result.split("\n");
           for (var i = 0; i < splits.length; i++) {
-            $("#reader").append("<div>" + splits[i] + "</div>");
+            $("#reader").append('<div class="respond">' + splits[i] + "</div>");
           }
         });
       });
