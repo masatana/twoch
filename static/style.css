@@ -33,3 +33,7 @@ li {
     -moz-border-radius: 10px;
     margin-top: 10px;
 }
+.respond_meta {
+    display: inline-block;
+    _display: inline;
+}
