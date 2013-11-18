@@ -1,12 +1,12 @@
 #sidebar {
-    width: 10%;
+    width: 20%;
     float: left;
     margin: 0;
     padding: 0;
     border: double;
 }
 #reader {
-    width: 80%;
+    width: 78%; /* TODO Too naive... Must be more intelligent way*/
     float: right;
     margin: 0;
     padding: 0;
@@ -23,4 +23,23 @@ li {
 .dat {
     cursor: pointer;
     text-decoration: underline;
+}
+
+/* resそれぞれ一つ */
+.respond {
+    border: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    margin-top: 20px;
+    background-color: #eee8d5;
+}
+.respond_meta {
+    display: inline-block;
+    _display: inline;
+}
+
+body {
+    background-color: #fdf6e3;
 }

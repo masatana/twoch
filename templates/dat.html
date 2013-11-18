@@ -3,13 +3,18 @@
 <h2>dat</h2>
 <div id="sidebar">
   {% block sidebar %}
-  {% for creation_date, thread in sidebar_contents.items() %}
-    <h2>{{ creation_date }}</h2>
+  {% for creation_date, thread in sidebar_contents|dictsort %}
+    <h2 onclick="fold(this)"> {{ creation_date }}</h2>
+    <span style="display:none">
     {% for thread_title, thread_id in thread.items() %}
-      <li><span href="#" id="{{ thread_id }}" class="dat">{{ thread_title }}</span></li>
+        <li><span href="#" id="{{ thread_id }}" class="dat">{{ thread_title }}</span></li>
     {% endfor %}
+    </span>
   {% endfor %}
   {% endblock %}
 </div>
-<div id="reader">{% block reader %}{% endblock %}</div>
+<div id="reader">
+  {% block reader %}
+  {% endblock %}
+</div>
 {% endblock %}

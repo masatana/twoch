@@ -7,17 +7,51 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript">
     $(function() {
-      $(".dat").click(function() {
-        $.getJSON("/_get_dat", {
+      $('.dat').click(function() {
+        $.getJSON('/_get_dat', {
           thread_id: this.id
         }, function(data) {
           console.log(data.result);
-          //$("#reader").html(data.result);
+          // Do not use remove()
+          // Remove previous dat
+          $('#reader').empty();
+          //console.log(data.result);
+          var splits = data.result.split('\n');
+          for (var i = 0; i < splits.length; i++) {
+            $('#reader').append(function() {
+              var strings = splits[i].split("<>");
+              //console.log(strings);
+              var respond_meta = '<span class="respond_meta"><span class="respond_number">' + String(i + 1) + '</span>';
+              respond_meta += '<span class="name">' + escapeHtml(strings[0]) + '</span>';
+              respond_meta += '<span class="email">' + escapeHtml(strings[1]) + '</span>';
+              respond_meta += '<span class="date_id_be">' + escapeHtml(strings[2]) + '</span></span>';
+              var respond_text = '<div class="respond_text">' + strings[3] + '</div:>';
+              //var respond = '<div class="respond">' + splits[i] + '</div>';
+              return '<div class="respond">' + respond_meta + respond_text + '</div>';
+            });
+          }
         });
       });
     });
-    {% endblock %}
+    function escapeHtml(unsafe) {
+      return unsafe
+        .replace(/&/g, '&amp;')
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+    function fold(x) {
+      var y = x.nextSibling;
+      while (y.nodeType != 1) y = y.nextSibling;
+      if (y.style.display == 'none') {
+        y.style.display = '';
+      } else {
+        y.style.display = 'none';
+      }
+    }
     </script>
+    {% endblock %}
   </head>
   <body>
     <h1>twoch</h1>

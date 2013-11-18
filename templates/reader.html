@@ -1,0 +1,6 @@
+{% extends "dat.html" %}
+{% block reader %}
+{% for key, value in data.items() %}
+  <p> {{ value }} </p>
+{% endfor %}
+{% endblock %}

@@ -3,12 +3,13 @@
 import sqlite3
 import os
 import logging
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 from flask import Flask, request, render_template, g, jsonify, request
 from contextlib import closing
 import xml.sax.saxutils as xss
 
-DATABASE = "/home/www-data/flask_app/twoch/downloaded.sqlite"
+#DATABASE = "/home/www-data/flask_app/twoch/downloaded.sqlite"
+DATABASE = "/home/masatana/2ch_crawler/downloaded.sqlite"
 # DATABASE = "/tmp/twoch.db"
 DEBUG = True
 
@@ -46,16 +47,20 @@ def dat():
     sidebar_contents = defaultdict(lambda: defaultdict(dict))
     for thread in query_db("SELECT * FROM downloaded_thread"):
         sidebar_contents[thread["download_date"]][thread["title"]] = thread["id"]
-    return render_template("dat.html", sidebar_contents = sidebar_contents)
+    return render_template("dat.html", sidebar_contents = sidebar_contents, data = {})
 
 @app.route("/_get_dat")
 def get_dat():
+    sidebar_contents = defaultdict(lambda: defaultdict(dict))
+    for thread in query_db("SELECT * FROM downloaded_thread"):
+        sidebar_contents[thread["download_date"]][thread["title"]] = thread["id"]
+    g.sidebar_contents = sidebar_contents
     thread_id = request.args.get("thread_id", 0, type=int)
     t = (thread_id,)
     res = query_db("SELECT * FROM downloaded_thread WHERE id=?", args=t)
+    data = defaultdict(dict)
     with open("/home/masatana/2ch_crawler/dat/" + res[0]["download_date"] + "/" + res[0]["title"] + ".dat", "r") as f:
-        data = f.read()
-    return jsonify(result = data)
+        return jsonify(result = f.read())
 
 @app.route("/img")
 def img():
