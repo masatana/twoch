@@ -17,14 +17,22 @@
           console.log(data.result);
           var splits = data.result.split("\n");
           for (var i = 0; i < splits.length; i++) {
-            $("#reader").append("<p>" + splits[i] + "</p>");
+            $("#reader").append("<div>" + splits[i] + "</div>");
           }
-          //$("#reader").text(data.result);
         });
       });
     });
-    {% endblock %}
+    function fold(x) {
+      var y = x.nextSibling;
+      while (y.nodeType != 1) y = y.nextSibling;
+      if (y.style.display == "none") {
+        y.style.display = "";
+      } else {
+        y.style.display = "none";
+      }
+    }
     </script>
+    {% endblock %}
   </head>
   <body>
     <h1>twoch</h1>

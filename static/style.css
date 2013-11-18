@@ -1,12 +1,12 @@
 #sidebar {
-    width: 10%;
+    width: 20%;
     float: left;
     margin: 0;
     padding: 0;
     border: double;
 }
 #reader {
-    width: 80%;
+    width: 78%; /* TODO Too naive... Must be more intelligent way*/
     float: right;
     margin: 0;
     padding: 0;
@@ -25,7 +25,7 @@ li {
     text-decoration: underline;
 }
 
-p {
+div {
     color: green;
     border: solid;
 }
