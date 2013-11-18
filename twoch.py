@@ -61,20 +61,6 @@ def get_dat():
     data = defaultdict(dict)
     with open("/home/masatana/2ch_crawler/dat/" + res[0]["download_date"] + "/" + res[0]["title"] + ".dat", "r") as f:
         return jsonify(result = f.read())
-        """
-        for i, line in enumerate(f.readlines()):
-            if line == "":
-                break
-            name, email, data_id_be, body, thread_title  = line.split("<>")
-            data[i]["name"] = xss.escape(name)
-            data[i]["email"] = xss.escape(email)
-            data[i]["data_id_be"] = xss.escape(data_id_be)
-            data[i]["body"] = xss.escape(body)
-            data[i]["thread_title"] = xss.escape(thread_title)
-        """
-    #return render_template("reader.html", sidebar_contents = sidebar_contents, data = data)
-    #return jsonify(result = data[2])
-
 
 @app.route("/img")
 def img():
