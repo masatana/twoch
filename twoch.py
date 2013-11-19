@@ -3,6 +3,7 @@
 import sqlite3
 import os
 import logging
+import time
 from collections import defaultdict, OrderedDict
 from flask import Flask, request, render_template, g, jsonify, request
 from contextlib import closing
@@ -51,15 +52,9 @@ def dat():
 
 @app.route("/_get_dat")
 def get_dat():
-    sidebar_contents = defaultdict(lambda: defaultdict(dict))
-    for thread in query_db("SELECT * FROM downloaded_thread"):
-        sidebar_contents[thread["download_date"]][thread["title"]] = thread["id"]
-    g.sidebar_contents = sidebar_contents
     thread_id = request.args.get("thread_id", 0, type=int)
-    t = (thread_id,)
-    res = query_db("SELECT * FROM downloaded_thread WHERE id=?", args=t)
-    data = defaultdict(dict)
-    with open("/home/masatana/2ch_crawler/dat/" + res[0]["download_date"] + "/" + res[0]["title"] + ".dat", "r") as f:
+    creation_datetime = time.strftime("%Y-%m-%d", time.localtime(thread_id))
+    with open("/home/masatana/2ch_crawler/dat/" + creation_datetime + "/" + str(thread_id) + ".dat", "r") as f:
         return jsonify(result = f.read())
 
 @app.route("/img")
