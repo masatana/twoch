@@ -25,7 +25,7 @@
               respond_meta += '<span class="name">' + escapeHtml(strings[0]) + '</span>';
               respond_meta += '<span class="email">' + escapeHtml(strings[1]) + '</span>';
               respond_meta += '<span class="date_id_be">' + escapeHtml(strings[2]) + '</span></span>';
-              var respond_text = '<div class="respond_text">' + strings[3] + '</div:>';
+              var respond_text = '<div class="respond_text">' + escapeRespondText(strings[3]) + '</div:>';
               //var respond = '<div class="respond">' + splits[i] + '</div>';
               return '<div class="respond">' + respond_meta + respond_text + '</div>';
             });
@@ -33,13 +33,20 @@
         });
       });
     });
+    function escapeRespondText(unsafe) {
+      var safe = escapeHtml(unsafe);
+      console.log(safe);
+      return safe
+        .replace(/&lt;br&gt;/g, '<br>')
+        .replace(/&lt;a.*&gt;&amp;gt;&amp;gt;(\d).*\/a&gt;/g, '>>$1');
+    }
     function escapeHtml(unsafe) {
       return unsafe
         .replace(/&/g, '&amp;')
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
     }
     function fold(x) {
       var y = x.nextSibling;
