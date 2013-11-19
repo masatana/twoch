@@ -27,8 +27,8 @@ li {
 
 /* resそれぞれ一つ */
 .respond {
-    border: solid;
-    border-width: 1px;
+    /*border: solid;*/
+    /*border-width: 1px;*/
     border-radius: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -36,8 +36,9 @@ li {
     background-color: #eee8d5;
 }
 .respond_meta {
-    display: inline-block;
-    _display: inline;
+}
+.respond_text {
+    padding: 20px;
 }
 
 body {
