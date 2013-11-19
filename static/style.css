@@ -14,6 +14,8 @@
 
 #footer {
     text-align: center;
+    position: absolute;
+    bottom: 0;
     clear: both;
 }
 li {
@@ -43,4 +45,27 @@ li {
 
 body {
     background-color: #fdf6e3;
+}
+
+#page-top {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 77%;
+}
+
+#page-top a {
+    background: #666;
+    text-decoration: none;
+    color: #fff;
+    width: 100px;
+    padding: 30px;
+    text-align: center;
+    display: block;
+    border-radius: 5px;
+}
+
+#page-top a:hover {
+    text-decoration: none;
+    background: #999;
 }
