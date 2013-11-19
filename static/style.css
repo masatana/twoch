@@ -12,10 +12,13 @@
     padding: 0;
 }
 
-#footer {
+footer {
     text-align: center;
+    position: fixed;
+    margin: 0 auto;
+    width: 100%;
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     clear: both;
 }
 li {
